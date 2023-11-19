@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 
-var request = require('request');
-var rp = require('../../../');
+var request = require("@implydata/request");
+var rp = require("../../../");
 
-var requestHasNoThen = request('http://localhost:4000/200').then === undefined;
-var rpHasThen = rp('http://localhost:4000/200').then !== undefined;
+var requestHasNoThen = request("http://localhost:4000/200").then === undefined;
+var rpHasThen = rp("http://localhost:4000/200").then !== undefined;
 
-console.log('request: ' + requestHasNoThen + ', rp: ' + rpHasThen);
+console.log("request: " + requestHasNoThen + ", rp: " + rpHasThen);

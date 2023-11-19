@@ -1,3 +1,3 @@
-'use strict';
+"use strict";
 
-module.exports = require('request-promise-core/errors');
+module.exports = require("./lib/errors");
