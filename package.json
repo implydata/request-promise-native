@@ -13,6 +13,7 @@
     "native"
   ],
   "main": "./lib/rp.js",
+  "typings": "./index.d.ts",
   "scripts": {
     "test": "mocha test/spec/**/*.js"
   },
@@ -29,7 +30,9 @@
   "engines": {
     "node": ">=14.0.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "extend": "^3.0.2"
+  },
   "peerDependencies": {
     "@implydata/request": "^2.88.3"
   },
