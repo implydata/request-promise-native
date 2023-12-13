@@ -10,6 +10,10 @@
 [![Dependency Status](https://img.shields.io/david/request/request-promise-native.svg?style=flat-square&maxAge=2592000)](https://david-dm.org/request/request-promise-native)
 [![Known Vulnerabilities](https://snyk.io/test/npm/request-promise-native/badge.svg?style=flat-square&maxAge=2592000)](https://snyk.io/test/npm/request-promise-native)
 
+# Fork notes
+
+The `@implydata` fork changes the package design by inlining the functionality from `request-promise-core` and by using inheritance instead of monkey-patching to override behavior on the `Request` class. It also drops the `stealthy-require` dependency, which makes it possible to include this package in fully bundled applications.
+
 # Deprecated!
 
 As of Feb 11th 2020, [`request`](https://github.com/request/request) is fully deprecated. No new changes are expected to land. In fact, none have landed for some time. This package is also deprecated because it depends on `request`.
@@ -21,8 +25,9 @@ Fyi, here is the [reasoning of `request`'s deprecation](https://github.com/reque
 This package is similar to [`request-promise`](https://www.npmjs.com/package/request-promise) but uses native ES6+ promises.
 
 Please refer to the [`request-promise` documentation](https://www.npmjs.com/package/request-promise). Everything applies to `request-promise-native` except the following:
-- Instead of using Bluebird promises this library uses native ES6+ promises.
-- Native ES6+ promises may have fewer features than Bluebird promises do. In particular, the `.finally(...)` method was not included until Node v10.
+
+-   Instead of using Bluebird promises this library uses native ES6+ promises.
+-   Native ES6+ promises may have fewer features than Bluebird promises do. In particular, the `.finally(...)` method was not included until Node v10.
 
 ## Installation
 
@@ -57,32 +62,32 @@ If you want to debug a test you should use `gulp test-without-coverage` to run a
 
 ## Change History
 
-- v1.0.9 (2020-07-21)
-    - Security fix: bumped `request-promise-core` which bumps `lodash` to `^4.17.19` following [this advisory](https://www.npmjs.com/advisories/1523).
-- v1.0.8 (2019-11-03)
-    - Security fix: bumped `request-promise-core` which bumps `lodash` to `^4.17.15`. See [vulnerabilty reports](https://snyk.io/vuln/search?q=lodash&type=npm).
-      *(Thanks to @aw-davidson for reporting this in issue [#49](https://github.com/request/request-promise-native/issues/49).)*
-- v1.0.7 (2019-02-14)
-    - Corrected mistakenly set `tough-cookie` version, now `^2.3.3`
-      *(Thanks to @evocateur for pointing this out.)*
-    - If you installed `request-promise-native@1.0.6` please make sure after the upgrade that `request` and `request-promise-native` use the same physical copy of `tough-cookie`.
-- v1.0.6 (2019-02-14)
-    - Using stricter `tough-cookie@~2.3.3` to avoid installing `tough-cookie@3` which introduces breaking changes
-      *(Thanks to @jasonmit for pull request [#33](https://github.com/request/request-promise-native/pull/33/))*
-    - Security fix: bumped `lodash` to `^4.17.11`, see [vulnerabilty reports](https://snyk.io/vuln/search?q=lodash&type=npm)
-- v1.0.5 (2017-09-22)
-    - Upgraded `tough-cookie` to a version without regex DoS vulnerability
-      *(Thanks to @sophieklm for [pull request #13](https://github.com/request/request-promise-native/pull/13))*
-- v1.0.4 (2017-05-07)
-    - Fix that allows to use `tough-cookie` for [cookie creation](https://github.com/request/request-promise#include-a-cookie)
-- v1.0.3 (2016-08-08)
-    - Renamed internally used package `@request/promise-core` to `request-promise-core` because there where [too](https://github.com/request/request-promise/issues/137) [many](https://github.com/request/request-promise/issues/141) issues with the scoped package name
-- v1.0.2 (2016-07-18)
-    - Fix for using with module bundlers like Webpack and Browserify
-- v1.0.1 (2016-07-17)
-    - Fixed `@request/promise-core` version for safer versioning
-- v1.0.0 (2016-07-15)
-    - Initial version similar to [`request-promise`](https://www.npmjs.com/package/request-promise) v4
+-   v1.0.9 (2020-07-21)
+    -   Security fix: bumped `request-promise-core` which bumps `lodash` to `^4.17.19` following [this advisory](https://www.npmjs.com/advisories/1523).
+-   v1.0.8 (2019-11-03)
+    -   Security fix: bumped `request-promise-core` which bumps `lodash` to `^4.17.15`. See [vulnerabilty reports](https://snyk.io/vuln/search?q=lodash&type=npm).
+        _(Thanks to @aw-davidson for reporting this in issue [#49](https://github.com/request/request-promise-native/issues/49).)_
+-   v1.0.7 (2019-02-14)
+    -   Corrected mistakenly set `tough-cookie` version, now `^2.3.3`
+        _(Thanks to @evocateur for pointing this out.)_
+    -   If you installed `request-promise-native@1.0.6` please make sure after the upgrade that `request` and `request-promise-native` use the same physical copy of `tough-cookie`.
+-   v1.0.6 (2019-02-14)
+    -   Using stricter `tough-cookie@~2.3.3` to avoid installing `tough-cookie@3` which introduces breaking changes
+        _(Thanks to @jasonmit for pull request [#33](https://github.com/request/request-promise-native/pull/33/))_
+    -   Security fix: bumped `lodash` to `^4.17.11`, see [vulnerabilty reports](https://snyk.io/vuln/search?q=lodash&type=npm)
+-   v1.0.5 (2017-09-22)
+    -   Upgraded `tough-cookie` to a version without regex DoS vulnerability
+        _(Thanks to @sophieklm for [pull request #13](https://github.com/request/request-promise-native/pull/13))_
+-   v1.0.4 (2017-05-07)
+    -   Fix that allows to use `tough-cookie` for [cookie creation](https://github.com/request/request-promise#include-a-cookie)
+-   v1.0.3 (2016-08-08)
+    -   Renamed internally used package `@request/promise-core` to `request-promise-core` because there where [too](https://github.com/request/request-promise/issues/137) [many](https://github.com/request/request-promise/issues/141) issues with the scoped package name
+-   v1.0.2 (2016-07-18)
+    -   Fix for using with module bundlers like Webpack and Browserify
+-   v1.0.1 (2016-07-17)
+    -   Fixed `@request/promise-core` version for safer versioning
+-   v1.0.0 (2016-07-15)
+    -   Initial version similar to [`request-promise`](https://www.npmjs.com/package/request-promise) v4
 
 ## License (ISC)
 
