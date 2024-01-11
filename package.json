@@ -1,6 +1,9 @@
 {
   "name": "@implydata/request-promise-native",
   "version": "1.0.9",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "The simplified HTTP request client 'request' with Promise support. Powered by native ES6 promises.",
   "keywords": [
     "xhr",
